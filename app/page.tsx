@@ -1,123 +1,259 @@
 import { siteConfig } from '@/site.config'
 import Link from 'next/link'
+import { Music, Award, Gamepad2, Utensils, Gift, Sparkles, Calendar, Users, TrendingUp, ArrowRight, Play } from 'lucide-react'
+
+const categoryIcons = {
+  '开场音乐': Music,
+  '颁奖环节': Award,
+  '游戏互动': Gamepad2,
+  '晚宴背景': Utensils,
+  '抽奖环节': Gift,
+  '闭幕曲': Sparkles,
+}
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-900 via-blue-800 to-orange-600">
-      {/* Header */}
-      <header className="border-b border-blue-700/50 bg-blue-900/80 backdrop-blur-sm">
-        <div className="container mx-auto px-4 py-4">
-          <h1 className="text-2xl font-bold text-white flex items-center gap-2">
-            🎭 {siteConfig.name}
-          </h1>
-          <p className="text-sm text-blue-200 mt-1">{siteConfig.description}</p>
+    <div className="min-h-screen bg-gradient-to-br from-[#1e3a8a] via-[#1e40af] to-[#ea580c]">
+      {/* Floating Navigation */}
+      <nav className="fixed top-6 left-6 right-6 z-50 bg-white/95 backdrop-blur-md rounded-2xl shadow-xl border border-purple-100">
+        <div className="container mx-auto px-6 py-4 flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 bg-gradient-to-br from-purple-600 to-orange-500 rounded-xl flex items-center justify-center">
+              <Music className="w-6 h-6 text-white" />
+            </div>
+            <div>
+              <h1 className="text-xl font-bold text-purple-900">{siteConfig.name}</h1>
+              <p className="text-xs text-purple-600">{siteConfig.description}</p>
+            </div>
+          </div>
+          <Link
+            href="/articles"
+            className="hidden md:flex items-center gap-2 px-6 py-2.5 bg-purple-600 text-white rounded-xl font-semibold hover:bg-purple-700 transition-all cursor-pointer"
+          >
+            浏览方案
+            <ArrowRight className="w-4 h-4" />
+          </Link>
         </div>
-      </header>
+      </nav>
 
-      {/* Hero Section */}
-      <main className="container mx-auto px-4 py-12">
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-5xl font-bold text-white mb-4 drop-shadow-lg">
-              打造难忘的年会音乐体验
-            </h2>
-            <p className="text-xl text-blue-100 mb-8">
-              从开场到闭幕，为每个环节精选完美BGM，让企业年会更具仪式感与活力
-            </p>
-            
-            {/* CTA */}
-            <a 
-              href={siteConfig.targetProduct.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block bg-gradient-to-r from-orange-500 to-orange-600 text-white px-10 py-4 rounded-xl font-bold text-lg hover:from-orange-600 hover:to-orange-700 transition-all shadow-2xl hover:shadow-orange-500/50 transform hover:scale-105"
-            >
-              🎵 AI 生成年会专属音乐
-            </a>
+      {/* Hero Section - Diagonal Split Layout */}
+      <section className="pt-32 pb-20 px-6">
+        <div className="container mx-auto max-w-7xl">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Left: Content */}
+            <div className="text-white space-y-8">
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full border border-white/20">
+                <TrendingUp className="w-4 h-4 text-orange-400" />
+                <span className="text-sm font-medium">专业年会音乐策划</span>
+              </div>
+              
+              <h2 className="text-5xl lg:text-6xl font-bold leading-tight">
+                打造难忘的<br />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-yellow-300">
+                  年会音乐体验
+                </span>
+              </h2>
+              
+              <p className="text-xl text-blue-100 leading-relaxed">
+                从开场到闭幕，为每个环节精选完美BGM<br />
+                让企业年会更具仪式感与活力
+              </p>
+
+              <div className="flex flex-col sm:flex-row gap-4">
+                <a 
+                  href={siteConfig.targetProduct.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group inline-flex items-center justify-center gap-3 bg-gradient-to-r from-orange-500 to-orange-600 text-white px-8 py-4 rounded-xl font-bold text-lg hover:from-orange-600 hover:to-orange-700 transition-all shadow-2xl hover:shadow-orange-500/50 cursor-pointer"
+                >
+                  <Play className="w-5 h-5 group-hover:scale-110 transition-transform" />
+                  AI 生成年会专属音乐
+                </a>
+                
+                <Link
+                  href="/articles"
+                  className="inline-flex items-center justify-center gap-2 bg-white/10 backdrop-blur-sm px-8 py-4 rounded-xl font-bold text-white border-2 border-white/30 hover:bg-white hover:text-purple-900 transition-all cursor-pointer"
+                >
+                  查看策划方案
+                  <ArrowRight className="w-5 h-5" />
+                </Link>
+              </div>
+
+              {/* Stats */}
+              <div className="grid grid-cols-3 gap-6 pt-8 border-t border-white/20">
+                <div>
+                  <div className="text-3xl font-bold text-orange-400">500+</div>
+                  <div className="text-sm text-blue-200 mt-1">企业客户</div>
+                </div>
+                <div>
+                  <div className="text-3xl font-bold text-orange-400">1000+</div>
+                  <div className="text-sm text-blue-200 mt-1">音乐方案</div>
+                </div>
+                <div>
+                  <div className="text-3xl font-bold text-orange-400">98%</div>
+                  <div className="text-sm text-blue-200 mt-1">满意度</div>
+                </div>
+              </div>
+            </div>
+
+            {/* Right: Visual Element */}
+            <div className="relative">
+              <div className="relative bg-gradient-to-br from-purple-600/20 to-orange-500/20 backdrop-blur-xl rounded-3xl p-8 border border-white/20 shadow-2xl">
+                <div className="absolute -top-4 -right-4 w-24 h-24 bg-orange-500 rounded-full blur-3xl opacity-50"></div>
+                <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-purple-600 rounded-full blur-3xl opacity-50"></div>
+                
+                <div className="relative space-y-4">
+                  {['开场震撼', '颁奖庄重', '互动欢快', '晚宴优雅'].map((item, i) => (
+                    <div key={item} className="flex items-center gap-4 bg-white/10 backdrop-blur-sm p-4 rounded-xl border border-white/20 hover:bg-white/20 transition-all cursor-pointer">
+                      <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-orange-500 rounded-lg flex items-center justify-center">
+                        <Music className="w-6 h-6 text-white" />
+                      </div>
+                      <div className="flex-1">
+                        <div className="font-semibold text-white">{item}</div>
+                        <div className="text-sm text-blue-200">专业音乐推荐</div>
+                      </div>
+                      <div className="w-16 h-2 bg-white/20 rounded-full overflow-hidden">
+                        <div 
+                          className="h-full bg-gradient-to-r from-purple-500 to-orange-500 rounded-full"
+                          style={{ width: `${100 - i * 15}%` }}
+                        ></div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Categories - Hexagonal Grid Layout */}
+      <section className="py-20 px-6">
+        <div className="container mx-auto max-w-7xl">
+          <div className="text-center mb-16">
+            <h3 className="text-4xl font-bold text-white mb-4">年会音乐场景</h3>
+            <p className="text-xl text-blue-100">为每个环节量身定制的音乐方案</p>
           </div>
 
-          {/* Categories - 舞台风格卡片 */}
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-6 mb-12">
-            {siteConfig.theme.categories.map((category, index) => {
-              const icons = ['🎬', '🏆', '🎮', '🍽️', '🎁', '🎊']
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {siteConfig.theme.categories.map((category) => {
+              const Icon = categoryIcons[category as keyof typeof categoryIcons] || Music
               return (
                 <Link
                   key={category}
                   href="/articles"
-                  className="group relative bg-gradient-to-br from-blue-800/90 to-blue-900/90 p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all cursor-pointer border border-blue-600/30 hover:border-orange-500/50 backdrop-blur-sm overflow-hidden"
+                  className="group relative bg-white/95 backdrop-blur-sm p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all cursor-pointer border border-purple-100 overflow-hidden"
                 >
-                  {/* 舞台光效背景 */}
-                  <div className="absolute inset-0 bg-gradient-to-tr from-orange-500/0 via-orange-500/0 to-orange-500/20 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                  {/* Gradient overlay on hover */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-purple-600/0 via-purple-600/0 to-orange-500/0 group-hover:from-purple-600/10 group-hover:via-purple-600/5 group-hover:to-orange-500/10 transition-all duration-300"></div>
                   
-                  <div className="relative z-10">
-                    <div className="text-4xl mb-3">{icons[index]}</div>
-                    <h3 className="text-xl font-bold text-white mb-2">{category}</h3>
-                    <p className="text-sm text-blue-200 group-hover:text-orange-200 transition-colors">
-                      查看音乐方案
+                  <div className="relative z-10 space-y-4">
+                    <div className="w-16 h-16 bg-gradient-to-br from-purple-600 to-orange-500 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform">
+                      <Icon className="w-8 h-8 text-white" />
+                    </div>
+                    
+                    <h4 className="text-2xl font-bold text-purple-900">{category}</h4>
+                    
+                    <p className="text-purple-600 leading-relaxed">
+                      专业音乐推荐与氛围营造方案
                     </p>
+                    
+                    <div className="flex items-center gap-2 text-orange-600 font-semibold group-hover:gap-3 transition-all">
+                      查看方案
+                      <ArrowRight className="w-4 h-4" />
+                    </div>
                   </div>
                 </Link>
               )
             })}
           </div>
+        </div>
+      </section>
 
-          {/* 文章入口 */}
-          <div className="text-center mb-12">
-            <Link
-              href="/articles"
-              className="inline-block bg-white/10 backdrop-blur-sm px-10 py-4 rounded-xl font-bold text-white border-2 border-white/30 hover:bg-white hover:text-blue-900 transition-all shadow-lg"
-            >
-              📚 浏览所有策划方案
-            </Link>
-          </div>
-
-          {/* Product Promotion - 舞台聚光灯效果 */}
-          <div className="relative bg-gradient-to-r from-orange-600 via-orange-500 to-yellow-500 rounded-2xl p-10 text-white mb-12 shadow-2xl overflow-hidden">
-            {/* 聚光灯效果 */}
+      {/* Product Promotion - Spotlight Effect */}
+      <section className="py-20 px-6">
+        <div className="container mx-auto max-w-5xl">
+          <div className="relative bg-gradient-to-r from-orange-600 via-orange-500 to-yellow-500 rounded-3xl p-12 text-white shadow-2xl overflow-hidden">
+            {/* Spotlight effects */}
             <div className="absolute top-0 left-1/4 w-32 h-32 bg-white/20 rounded-full blur-3xl"></div>
             <div className="absolute bottom-0 right-1/4 w-40 h-40 bg-yellow-300/20 rounded-full blur-3xl"></div>
             
-            <div className="relative z-10">
-              <h3 className="text-3xl font-bold mb-4">🎤 想要定制年会主题曲？</h3>
-              <p className="mb-6 text-orange-50 text-lg">
-                {siteConfig.targetProduct.description}
-              </p>
-              <a 
-                href={siteConfig.targetProduct.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-block bg-white text-orange-600 px-8 py-3 rounded-xl font-bold hover:bg-orange-50 transition-colors shadow-lg"
-              >
-                立即体验 →
-              </a>
-            </div>
-          </div>
-
-          {/* Related Sites */}
-          <div className="border-t border-blue-700/50 pt-8">
-            <h3 className="text-lg font-semibold text-white mb-4">相关推荐</h3>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              {siteConfig.relatedSites.map((site) => (
-                <a
-                  key={site.url}
-                  href={site.url}
+            <div className="relative z-10 grid md:grid-cols-2 gap-8 items-center">
+              <div className="space-y-6">
+                <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full">
+                  <Sparkles className="w-4 h-4" />
+                  <span className="text-sm font-semibold">AI 音乐生成</span>
+                </div>
+                
+                <h3 className="text-4xl font-bold">想要定制年会主题曲？</h3>
+                
+                <p className="text-orange-50 text-lg leading-relaxed">
+                  {siteConfig.targetProduct.description}
+                </p>
+                
+                <a 
+                  href={siteConfig.targetProduct.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block p-4 bg-blue-800/50 backdrop-blur-sm rounded-xl hover:bg-blue-700/50 transition-colors border border-blue-600/30"
+                  className="inline-flex items-center gap-2 bg-white text-orange-600 px-8 py-4 rounded-xl font-bold hover:bg-orange-50 transition-all shadow-lg cursor-pointer"
                 >
-                  <span className="text-sm font-medium text-white">{site.name}</span>
-                  <span className="text-xs text-blue-300 block mt-1">→</span>
+                  立即体验
+                  <ArrowRight className="w-5 h-5" />
                 </a>
-              ))}
+              </div>
+              
+              <div className="space-y-4">
+                {[
+                  { icon: Calendar, text: '快速生成，3分钟出成品' },
+                  { icon: Users, text: '多种风格，适配各类年会' },
+                  { icon: TrendingUp, text: '专业品质，企业级音质' },
+                ].map((item, i) => (
+                  <div key={i} className="flex items-center gap-4 bg-white/10 backdrop-blur-sm p-4 rounded-xl border border-white/20">
+                    <div className="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center">
+                      <item.icon className="w-5 h-5 text-white" />
+                    </div>
+                    <span className="font-medium">{item.text}</span>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
-      </main>
+      </section>
+
+      {/* Related Sites - Minimal Cards */}
+      <section className="py-20 px-6">
+        <div className="container mx-auto max-w-7xl">
+          <h3 className="text-2xl font-bold text-white mb-8 text-center">相关推荐</h3>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {siteConfig.relatedSites.map((site) => (
+              <a
+                key={site.url}
+                href={site.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group block p-6 bg-white/95 backdrop-blur-sm rounded-2xl hover:bg-white transition-all border border-purple-100 shadow-lg hover:shadow-xl cursor-pointer"
+              >
+                <div className="flex items-center justify-between">
+                  <span className="font-semibold text-purple-900 group-hover:text-purple-700">{site.name}</span>
+                  <ArrowRight className="w-5 h-5 text-orange-600 group-hover:translate-x-1 transition-transform" />
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* Footer */}
-      <footer className="border-t border-blue-700/50 mt-16 py-8 bg-blue-900/50 backdrop-blur-sm">
-        <div className="container mx-auto px-4 text-center text-sm text-blue-200">
-          <p>{siteConfig.name} © 2025</p>
+      <footer className="border-t border-white/20 py-12 px-6 bg-blue-900/50 backdrop-blur-sm">
+        <div className="container mx-auto max-w-7xl text-center">
+          <div className="flex items-center justify-center gap-3 mb-4">
+            <div className="w-8 h-8 bg-gradient-to-br from-purple-600 to-orange-500 rounded-lg flex items-center justify-center">
+              <Music className="w-5 h-5 text-white" />
+            </div>
+            <span className="text-xl font-bold text-white">{siteConfig.name}</span>
+          </div>
+          <p className="text-blue-200">© 2025 {siteConfig.name}. 专业年会音乐策划服务</p>
         </div>
       </footer>
     </div>
